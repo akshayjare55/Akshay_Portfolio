@@ -423,6 +423,65 @@ h2.section-title::after {
   color: white;
 }
 
+/* Featured project highlight */
+.project.featured {
+  border: 2px solid var(--accent);
+  position: relative;
+  background: linear-gradient(135deg, rgba(124, 58, 237, 0.05), rgba(236, 72, 153, 0.05));
+}
+
+.project.featured::before {
+  content: '🔥 Featured';
+  position: absolute;
+  top: -12px;
+  right: 20px;
+  background: linear-gradient(90deg, var(--accent), var(--pink));
+  color: white;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+  z-index: 2;
+}
+
+/* Project status badges */
+.project-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  margin-top: 12px;
+}
+
+.status-live {
+  background: var(--success);
+  color: white;
+}
+
+.status-development {
+  background: var(--accent);
+  color: white;
+}
+
+.status-planning {
+  background: var(--muted);
+  color: white;
+}
+
+/* Platform icons styling */
+.platform-tag {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.platform-tag:hover {
+  background: rgba(124, 58, 237, 0.2);
+  border-color: var(--accent);
+}
+
 /* contact */
 .contact-grid {
   grid-template-columns: 1fr 1fr;

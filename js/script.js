@@ -64,8 +64,12 @@ const obs = new IntersectionObserver((entries) => {
       if (entry.target.id === 'skills') {
         document.querySelectorAll('.bar').forEach(bar => {
           const width = bar.getAttribute('data-width');
+          // Set CSS variable for animation
           bar.style.setProperty('--width', width);
-          bar.querySelector('i').style.width = width;
+          // Animate the pseudo-element
+          setTimeout(() => {
+            bar.querySelector('i').style.width = width;
+          }, 200);
         });
       }
       
@@ -94,15 +98,33 @@ document.querySelectorAll('.project').forEach(project => {
   project.addEventListener('click', () => {
     const data = JSON.parse(project.getAttribute('data-project'));
     modalTitle.textContent = data.title;
-    modalBody.innerHTML = `<p>${data.desc.replace(/\n\n/g, '</p><p>')}</p><p><strong>Technologies:</strong> ${data.tech}</p>`;
+    
+    // Enhanced modal content with status if available
+    let modalContent = `<p>${data.desc.replace(/\n\n/g, '</p><p>')}</p>`;
+    modalContent += `<p><strong>Technologies:</strong> ${data.tech}</p>`;
+    
+    if (data.status) {
+      modalContent += `<p><strong>Status:</strong> ${data.status}</p>`;
+    }
+    
+    modalBody.innerHTML = modalContent;
     modalLink.href = data.link || '#';
+    
+    // Update GitHub button text based on project type
+    if (data.title.includes('OneCart')) {
+      modalLink.innerHTML = '<i class="fab fa-github"></i> View Project on GitHub';
+    }
+    
     modal.classList.add('open');
   });
 });
 
+// Close modal functions
 document.getElementById('modal-close').addEventListener('click', () => modal.classList.remove('open'));
 document.getElementById('modal-close-2').addEventListener('click', () => modal.classList.remove('open'));
-modal.addEventListener('click', (e) => { if(e.target === modal) modal.classList.remove('open') });
+modal.addEventListener('click', (e) => { 
+  if(e.target === modal) modal.classList.remove('open');
+});
 
 // Typing animation for roles
 const roles = ['Aspiring Data Scientist', 'Web Developer', 'Problem Solver', 'Tech Enthusiast'];
@@ -137,9 +159,33 @@ function typeRoles() {
   setTimeout(typeRoles, typingSpeed);
 }
 
+// Add platform icons interaction
+function enhanceProjectTags() {
+  document.querySelectorAll('.platform-tag').forEach(tag => {
+    tag.style.cursor = 'pointer';
+    tag.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const platform = tag.textContent.trim();
+      // Optional: Add functionality when platform tags are clicked
+      console.log('Platform clicked:', platform);
+    });
+  });
+}
+
+// Animate skill bars on hover
+function animateSkillBars() {
+  document.querySelectorAll('.skill').forEach(skill => {
+    skill.addEventListener('mouseenter', () => {
+      const bar = skill.querySelector('.bar');
+      const width = bar.getAttribute('data-width');
+      bar.style.setProperty('--width', width);
+    });
+  });
+}
+
 // Small keyboard shortcut to open email: press 'e'
 document.addEventListener('keydown', (e) => { 
-  if (e.key === 'e') { 
+  if (e.key === 'e' || e.key === 'E') { 
     window.location.href = 'mailto:akshayjare691@gmail.com'; 
   } 
 });
@@ -148,15 +194,59 @@ document.addEventListener('keydown', (e) => {
 document.addEventListener('DOMContentLoaded', function() {
   createParticles();
   typeRoles();
+  enhanceProjectTags();
+  animateSkillBars();
   
   // Hide scroll indicator when user scrolls
   const scrollIndicator = document.querySelector('.scroll-indicator');
-  window.addEventListener('scroll', function() {
-    if (window.scrollY > 100) {
-      scrollIndicator.style.opacity = '0';
+  if (scrollIndicator) {
+    window.addEventListener('scroll', function() {
+      if (window.scrollY > 100) {
+        scrollIndicator.style.opacity = '0';
+        setTimeout(() => {
+          scrollIndicator.style.display = 'none';
+        }, 300);
+      } else {
+        scrollIndicator.style.opacity = '0.7';
+        scrollIndicator.style.display = 'flex';
+      }
+    });
+  }
+
+  // Add click handler for featured project CTA
+  const featuredProject = document.querySelector('.project.featured');
+  if (featuredProject) {
+    featuredProject.style.cursor = 'pointer';
+    featuredProject.addEventListener('click', () => {
+      featuredProject.classList.add('animate__pulse');
       setTimeout(() => {
-        scrollIndicator.style.display = 'none';
-      }, 300);
-    }
-  });
+        featuredProject.classList.remove('animate__pulse');
+      }, 1000);
+    });
+  }
 });
+
+// Utility function for smooth scrolling
+function smoothScrollTo(element, duration = 1000) {
+  const targetPosition = element.getBoundingClientRect().top + window.pageYOffset;
+  const startPosition = window.pageYOffset;
+  const distance = targetPosition - startPosition;
+  let startTime = null;
+
+  function animation(currentTime) {
+    if (startTime === null) startTime = currentTime;
+    const timeElapsed = currentTime - startTime;
+    const run = ease(timeElapsed, startPosition, distance, duration);
+    window.scrollTo(0, run);
+    if (timeElapsed < duration) requestAnimationFrame(animation);
+  }
+
+  function ease(t, b, c, d) {
+    t /= d / 2;
+    if (t < 1) return c / 2 * t * t + b;
+    t--;
+    return -c / 2 * (t * (t - 2) - 1) + b;
+  }
+
+  requestAnimationFrame(animation);
+}
