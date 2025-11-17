@@ -59,65 +59,87 @@
           </a>
         </div>
 
-<div style="margin-top:30px; display:flex; flex-direction:column; gap:24px;" class="animate__animated animate__fadeIn animate__delay-2s">
+<div style="margin-top:30px; display:grid; grid-template-columns:1fr 370px; gap:24px;"
+     class="animate__animated animate__fadeIn animate__delay-2s">
 
-  <!-- LEFT SIDE: EDUCATION -->
-  <div style="display:flex;flex-direction:column;gap:16px;flex:1;min-width:320px;">
-       <!-- MCA (Pursuing) -->
-  <div class="card" style="display:inline-flex;gap:12px;align-items:center;padding:16px">
-    <i class="fas fa-graduation-cap" style="color: var(--accent);"></i>
-    <div>
-      <div style="font-weight:800">MCA - Pursuing</div>
-      <div style="color:var(--muted);font-size:14px">P. R. Pote College, Amravati</div>
+  <!-- LEFT SIDE — EDUCATION -->
+  <div style="display:flex; flex-direction:column; gap:16px;">
+
+    <!-- MCA -->
+    <div class="card" style="display:flex; gap:12px; align-items:center; padding:16px;">
+      <i class="fas fa-graduation-cap" style="color: var(--accent); font-size:20px;"></i>
+      <div>
+        <div style="font-weight:800;">MCA — Pursuing</div>
+        <div style="color:var(--muted); font-size:14px;">P. R. Pote College, Amravati</div>
+      </div>
     </div>
+
+    <!-- BCS -->
+    <div class="card" style="display:flex; gap:12px; align-items:center; padding:16px;">
+      <i class="fas fa-university" style="color: var(--pink); font-size:20px;"></i>
+      <div>
+        <div style="font-weight:800;">BCS — Graduate</div>
+        <div style="color:var(--muted); font-size:14px;">Adarsh College, Hingoli • CGPA: 9.08</div>
+      </div>
+    </div>
+
+    <!-- HSC -->
+    <div class="card" style="display:flex; gap:12px; align-items:center; padding:16px;">
+      <i class="fas fa-book-open" style="color: var(--cyan); font-size:20px;"></i>
+      <div>
+        <div style="font-weight:800;">HSC</div>
+        <div style="color:var(--muted); font-size:14px;">Aurangabad Board • 84.00%</div>
+      </div>
+    </div>
+
+    <!-- SSC -->
+    <div class="card" style="display:flex; gap:12px; align-items:center; padding:16px;">
+      <i class="fas fa-school" style="color: var(--accent-light); font-size:20px;"></i>
+      <div>
+        <div style="font-weight:800;">SSC</div>
+        <div style="color:var(--muted); font-size:14px;">Aurangabad Board • 84.60%</div>
+      </div>
+    </div>
+
   </div>
 
-  <!-- BCS Graduate -->
-  <div class="card" style="display:inline-flex;gap:12px;align-items:center;padding:16px">
-    <i class="fas fa-university" style="color: var(--pink);"></i>
-    <div>
-      <div style="font-weight:800">BCS - Graduate</div>
-      <div style="color:var(--muted);font-size:14px">Adarsh College, Hingoli · CGPA: 9.08</div>
-    </div>
-  </div>
+  <!-- RIGHT SIDE — PROFILE CARD -->
+  <aside class="card animate__animated animate__fadeIn animate__delay-1s">
 
-  <!-- HSC -->
-  <div class="card" style="display:inline-flex;gap:12px;align-items:center;padding:16px">
-    <i class="fas fa-book-open" style="color: var(--cyan);"></i>
-    <div>
-      <div style="font-weight:800">HSC</div>
-      <div style="color:var(--muted);font-size:14px">Aurangabad Divisional Board · 84.00%</div>
-    </div>
-  </div>
+    <img src="assets/profile.jpg" class="avatar" style="object-fit:cover;" alt="Akshay">
 
-  <!-- SSC -->
-  <div class="card" style="display:inline-flex;gap:12px;align-items:center;padding:16px">
-    <i class="fas fa-school" style="color: var(--accent-light);"></i>
-    <div>
-      <div style="font-weight:800">SSC</div>
-      <div style="color:var(--muted);font-size:14px">Aurangabad Divisional Board · 84.60%</div>
+    <div class="meta">
+      <div>
+        <div style="font-weight:800">Akshay Subhash Jare</div>
+        <div class="muted" style="font-size:13px">MCA — Aspiring Data Scientist</div>
+      </div>
+      <div style="text-align:right">
+        <div style="font-weight:800">DOB</div>
+        <div class="muted">July 1, 2004</div>
+      </div>
     </div>
-  </div>
+
+    <div style="margin-top:18px; display:flex; gap:10px;">
+      <a class="social-link" href="https://www.linkedin.com/in/akshay-jare-bcs" target="_blank">
+        <i class="fab fa-linkedin-in"></i> LinkedIn →
+      </a>
+      <a class="social-link" href="https://github.com/akshayjare55" target="_blank">
+        <i class="fab fa-github"></i> GitHub →
+      </a>
+    </div>
+
+    <div style="margin-top:18px; display:flex; flex-direction:column; gap:6px;">
+      <div style="font-weight:800; display:flex; align-items:center; gap:8px;">
+        <i class="fas fa-envelope"></i> Contact
+      </div>
+      <div class="muted">akshayjare691@gmail.com</div>
+      <div class="muted">+91 9284852545</div>
+    </div>
+
+  </aside>
 
 </div>
 
-  </div>
-
-  <!-- RIGHT SIDE: PROFILE CARD -->
-  <aside class="card" style="flex:1;min-width:320px;">
-    <aside class="card animate__animated animate__fadeIn animate__delay-1s">
-        <img src="aj.png" class="avatar" alt="Akshay Jare">
-        <div class="meta">
-          <div>
-            <div style="font-weight:800">Akshay Subhash Jare</div>
-            <div class="muted" style="font-size:13px">MCA — Aspiring Data Scientist</div>
-          </div>
-          <div style="text-align:right">
-            <div style="font-weight:800">DOB</div>
-            <div class="muted">July 1, 2004</div>
-          </div>
-        </div>
-  </aside>
 
 </div>
         <div style="margin-top:18px;display:flex;gap:10px">
