@@ -250,3 +250,20 @@ function smoothScrollTo(element, duration = 1000) {
 
   requestAnimationFrame(animation);
 }
+
+// ============= THEME TOGGLE =============== //
+const toggleBtn = document.getElementById("theme-toggle");
+
+// Load saved theme
+if (localStorage.getItem("theme") === "light") {
+  document.body.classList.add("light");
+  toggleBtn.textContent = "🌞";
+}
+
+toggleBtn.addEventListener("click", () => {
+  document.body.classList.toggle("light");
+  const isLight = document.body.classList.contains("light");
+
+  toggleBtn.textContent = isLight ? "🌞" : "🌙";
+  localStorage.setItem("theme", isLight ? "light" : "dark");
+});

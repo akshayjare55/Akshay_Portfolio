@@ -11,6 +11,15 @@
   --pink: #ec4899;
   --cyan: #06b6d4;
   --gradient: linear-gradient(135deg, var(--accent), var(--pink));
+  --bg: #0f172a;
+  --card: #1e293b;
+  --text: #ffffff;
+}
+
+.light {
+  --bg: #ffffff;
+  --card: #f1f5f9;
+  --text: #111111;
 }
 
 * {
@@ -24,6 +33,9 @@ html, body {
   background: linear-gradient(180deg, var(--bg), #081018 80%);
   color: #e6eef6;
   scroll-behavior: smooth;
+  background: var(--bg);
+  color: var(--text);
+  transition: 0.3s ease-in-out;
 }
 
 a {
